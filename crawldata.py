@@ -14,8 +14,8 @@ def printEtree(element):
     return etree.tostring(element, encoding='utf-8', pretty_print=True, method='html').decode('utf-8')
 
 
-for i in range(1, 10):
-    data = requests.get(url.format(page=i,city="杭州"))
+for i in range(2, 10):
+    data = requests.get(url.format(page=i,city="广州"))
     get_cookie = requests.utils.dict_from_cookiejar(data.cookies)
     print(get_cookie)
     # print(data.text)
@@ -86,6 +86,6 @@ for i in range(1, 10):
             with open('jobdetails/' + job_id + ".txt", mode="w", encoding="utf-8") as file:
                 file.write(job_detail)
 
-            time.sleep(random.randint(10, 20))
+            time.sleep(random.randint(30, 50))
 
     print("finished")

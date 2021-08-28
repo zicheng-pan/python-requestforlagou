@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,inital-scale=1.0,user-scalable=no" />
+<title>拉勾网</title>
+
+<script src="//www.lgstatic.com/lg-passport-fed/static/mobile/common/static/flexible/flexible_7e02215.js"></script><!-- 动态token，防御伪造请求，重复提交 -->
+<script>
+    window.X_Anti_Forge_Token = '2dfe4475-e1de-4ce7-8a63-fcd32b671f78';
+    window.X_Anti_Forge_Code = '609b9292-9b22-47cb-8c80-163c2b30885e';
+</script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="//www.lgstatic.com/lg-passport-fed/static/pkg/mobile/page/login/main.html_aio_d09cb5b.css" />
+</head>
+<body>
+<input type="hidden" value = "" id = "isVisiableRequestFormVerifyCode" />
+<div class="container">
+	<div class="linkedin-logo" style="display: none;">
+	</div>
+	<section class="form_container active">
+		<div style="display: none;">测试dom</div>
+		<header class="form_header">
+			<h2 class='login-title'>登录拉勾</h2>
+			<!-- <a href="../register/register.html" class="brother_link">注册</a> -->
+			<!-- <span class="signin_type_btn change_button_position hidden">密码登录</span> -->
+		</header>
+		<form class="form_body form_code" method="post">
+			<div class="input_label phone_wrapper account-wrap">
+				<!--
+	@require "mobile/modules/country-code/main.js"
+	@require "mobile/modules/country-code/main.less"
+-->
+<span class="area_code">0086</span>
+<div class="area_code_list">
+    <dl class="code_list_main"></dl>
+    <p class="tips">如果没有找到你所在的归属地，<br />请拨打客服电话<a href="tel:4006282835">4006282835</a> 解决。</p>
+</div>
+
+				<input type="text" placeholder="请输入常用手机号" class="input_text phone_input"/>
+			</div>
+			<div class="input_label" style="display: none;">
+				<input type="text" placeholder="请证明你不是机器人" class="input_text pcode_input" />
+				<img src="https://passport.lagou.com/vcode/create?from=login" class="pcode_img" width="2" height="2" alt="图片验证码" />
+				<a class="pcode_link">换一张</a>
+			</div>
+			<div class="input_label code-wrap">
+				<input type="text"  class="input_text vcode_input"  maxlength="6" placeholder="请输入收到的验证码"/>
+				<input type="button" class="input_text vcode_link" value="获取验证码" placeholder="获取验证码" />
+			</div>
+
+			<div class="input_label btn_group">
+				<input type="submit" class="submit_btn" value="注册/登录" />
+			</div>
+
+			<div class='edu-tips'>
+				进入拉勾教育即代表你已同意<span class='user-agreement-dom'>《用户协议》</span>及<span class='privacy-policy-dom'>《隐私政策》</span>
+			</div>
+			<div class="signin_type_btn">账号密码登录</div>
+			<div class="privacy">
+				<span class="no-check checkbox"></span>
+				同意拉勾招聘<a href="https://help.lagou.com/staticpage/app/statement/edu-statement.html">《用户协议》</a>及<a href="https://help.lagou.com/staticpage/app/statement/edu-privacy.html">《个人信息政策》</a>
+			</div>
+
+		</form>
+		<!-- <footer class="form_footer">
+			<span class="signin_type_btn">密码登录</span>
+		</footer> -->
+	</section>
+	<section class="form_container">
+		<header class="form_header">
+			<h2 class='login-title'>登录拉勾</h2>
+			<!-- <a href="../register/register.html" class="brother_link">
+				注册
+			</a> -->
+			<!-- <span class="signin_type_btn change_button_position hidden">手机号登录</span> -->
+		</header>
+		<form class="form_body form_password" method="post">
+			<div class="input_label account-wrap">
+				<input type="text" placeholder="请输入已验证的手机号或邮箱" class="input_text user_input"/>
+			</div>
+			<div class="input_label dn">
+				<input type="text" placeholder="请证明你不是机器人" class="input_text pcode_input" />
+				<img src="//www.lgstatic.com/lg-passport-fed/static/common/static/img/placeholder_9594b9f.jpg" class="pcode_img" width="2" height="2" alt="图片验证码" />
+				<a class="pcode_link">换一张</a>
+			</div>
+			<div class="input_label code-wrap">
+				<input type="password" class="input_text password_input" placeholder="请输入密码"/>
+			</div>
+			<div class="input_label btn_group">
+				<input type="submit" class="submit_btn" value="登录" />
+			</div>
+			<div class='edu-tips'>
+				进入拉勾教育即代表你已同意<span class='user-agreement-dom'>《用户协议》</span>及<span class='privacy-policy-dom'>《隐私政策》</span>
+			</div>
+
+			<div class="signin_type_btn">手机号登录</div>
+			<div class="privacy">
+				<span class="no-check checkbox" ></span>
+				同意拉勾招聘<a href="https://help.lagou.com/staticpage/app/statement/edu-statement.html">《用户协议》</a>及<a href="https://help.lagou.com/staticpage/app/statement/edu-privacy.html">《个人信息政策》</a>
+			</div>
+		</form>
+		<!-- <footer class="form_footer">
+			<span class="signin_type_btn">手机号登录</span>
+		</footer> -->
+	</section>
+</div>
+<input type="hidden" id="verifyStyle" style="display: none" value="nolagou"><!--拉勾UI框架 -->
+<!-- analytics js file -->
+
+<script type="text/javascript" src="//www.lgstatic.com/lg-passport-fed/static/pkg/vendor_c7a7c93.js"></script>
+<script type="text/javascript" src="//www.lgstatic.com/lg-passport-fed/static/pkg/mobile/page/login/main.html_aio_7cf5eb2.js"></script>
+<script type="text/javascript">
+	require(['mobile/page/login/main']);
+</script>
+<script type="text/javascript" src="//www.lgstatic.com/lg-passport-fed/static/pkg/lg-analytics_44f2da6.js"></script>
+<script type="text/javascript" src="//www.lgstatic.com/lg-passport-fed/static/common/static/js/web_tj/web_tj_2ffde28.js"></script>
+<script type="text/javascript" crossorigin="anonymous" src="https://passport.lagou.com/upload/oss.js?v=1010"></script></body>
+</html>
+

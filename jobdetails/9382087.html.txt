@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>安全访问验证-拉勾网</title>
+    <link rel="Shortcut Icon" href="//www.lgstatic.com/www/static/common/static/favicon_faed927.ico">
+    <style>* {
+        margin: 0;
+        padding: 0
+    }
+
+    body {
+        font-family: "Hiragino Sans GB", "Microsoft Yahei", "SimSun", Arial, "Helvetica Neue", Helvetica;
+        background: #f8f9fc
+    }
+
+    .container {
+        width: 511px;
+        /*height: 444px;*/
+        margin: 112px auto 0;
+        padding-left: 117px;
+        border: 1px solid #d5dadf;
+        border-radius: 2px;
+        background: #fff;
+        padding-bottom: 61px;
+    }
+
+    .i_logo {
+        width: 110px;
+        height: 41px;
+        margin: 61px 0 0 126px;
+        background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG4AAAApCAYAAADUBhwvAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAALBElEQVR42u2ceZQVxRWHP8YnLqCAARdQUXTUoOQcEJcTcQFNTKKlosgal7gEIUGNSyUYUBOOiSlMNEYFY1AWo8HlEKxIMMQtKjC4H3FXRNZRQRlcgBkH88etN6+6p7un3+v3GPX4O+ed6a66dbuqbvWtW/fenjaUCmu6AgOAY4ADgGqgI9DWUdQBK4E3gRrgUWARSm8u+ZnfoAltiqK2JgcMA84Bji66PawGpgG3oPTy1h78FoM1OwI7eSV1KP1RFpbpJt6aNsDZwG+APcowlAZgCjAepddUYq6wZhTwe6/kRJR+MkW7DsC7odLvoPSyDH2ZBFzglQxH6buzDK8qxUOrgfnA7ZRHaABbu4G8gTU/LhPPMLYBOni/XMp2bULtOqSapziIljrZK6kH5mQdXHKHrBkCPAccnvVBMegEzMCaKVjTNjO3LydOBnbz7u9B6bqsTONVpTWXARNT8qlHDJAaxBhZCXwKtHedPgAxYvok8JiJ0kMzjcaaXsA+7k4he3Ee44HFQANKP4g1fYA9I7i0A+4MlY0E3o+gXY3SNQn92Qp4ETjQK50LvJ5pnMSpj/RCewX4E3A/Sq9LMbHVwFnAecAuodohWDMOpd/KMJ5zgYti6ia4v3WI9Xuh60sa3BpTPhs4JaHdFQSFBvAD98uE5oKzZjgtC201cBnwj6LMe6XfBMZhzTXIKh5P0Nr6+sCagcDVlWIfFJw1PYG/ttDmYWAISq8t+alKbwBuwJrpwOXAEcCMjG8bwFvA4+56dwpqE0RlrQM+cfevebSlYnFkqTWnAXcTtCEeBlq2aqPRkZAmKexx1lQhe1TfBAYWGITS9RkHXHlYczFwvVfSH6Ufq/Azt0aOTGNDNXOAgSXPmzX7IrZDE/w3biTJQlsADP5KCC39hPQAzvRKnkfp2TG0A4CjvJLZKP18iOpOYHCo7C/ApSjdkKGn7cMFOdepbYArExrWIepxY+VmsVXQGbjKu5+FGBxROBX4mXf/AhAWnG9wLQLGovQjTSXW3ICovHpgA3AlSt9YQr835N+4M4BdEwjHV9xFJfvCpUBXRC1cj9KZD6otIGzit0ugDRtRKyNo6hHhTwHmoPQX3vh6UhB8W2ATMKPEftfnBXdeAlEt8eZweWDNScB9Xkl34DisGY3Sk8r8rCrPEi5GcJ1C9ysiaBRKb4p45tbAdIJb01VZ/JVVWLM3cFgCzbQtsK/9PKb8eqzZpyhO8eiPNVOAZ5pKlP4MUVl57JDQ3n/jPgfea0YRJTTBROBg7/5/QCkqsgk54NgWaP5TnnlLRPeY8m2ASwjuLfEQZ/geiKfmu6Ha/B4edhavBnq4628lcO/qXS9PfX615nyCpvwqYBhKN3o0vYDeQE/gCZR+sCW2VQQtpSi8lqqDpcKabYl2PeVxujuqpMEfEc/+Q8DpMTS1oXtfkNGCE9eV729MNyfWjAAmeyXrgRNQelWI8jok3PVLZKG2iByyOpPQznWiLfAH4CRgDTABpf/l6roiZ6bDgFcR8/cVV9fHTWh34Ang4pBuHwFsm/D8LsDewNspxpMk4PuBiRG+RX+v2hZrtncq1McuwFbe/Rst9kT27elen+qA41H6hQjqfwLfd9fHYM3OKO3vv2Gf8ic5CmoiDte6eNLlHvMewCys+QViAd5MwUvRHeiLNSMRod8E7Ojq9gZ6Ys1AlF6BNf0JHpLj0IN0gmsaGLCWoAq+KcYhHFadXWgejwuHs5KdxNYMRs50eaGtAH6I0otjWviqsQo5evhvaocQ/ec5xJ2ShFPdL4wccriMQmdkhUehL/Au1tQS3DeSkNafORlZREuAMaRbFEtC991pLrj9Q/cvxXIT9ei/aU8h3qbaCNqOQDdkYayloKqHERRcM+QIqoAthSrSCw1gu1RUShf2HmvS8g4LoQdi9fno5V03AM9GcrKmO0GhbQDeAW7EmvaI1doREVBnJKAchX5Y0ynpuJADGmkd4RWDTdlZxOJl4AsK+0jU8aOnd/28c5JHoZ7gPrsdUEqEvwr4HnBPEsG6Ck5KubC+YpyV/pTg/rlvBNVB3vWCBG4fFvHk95Ez5b1IrHBkqD4xZpdDdHzS+eXLgCXZWSSihoLAegdqrNmT4HHl4VguSm/CmvuQN28Tsm+tQYT0nnddG+n3tWYMhUVyfEJ/1+eQM8khFZ6YLGigOIuyFDyGHEsAqrGmPUrn43YDPLqNJAkOQOnTKR3zkL1/FbACa7qg9AcRdJtzyEZ8RoUnJgsWlehy6xa6T4ps+M7sKqAfkhsCkiuTh40445UPSl9C9AF8r9D95hwtraDWR/r+WdMNOW92AwaGapc5mkOB4RGtP6bgqxyHNfk95kceTRcXmvExC6WzRtL9MVRROPeCqPBfh6hW5VD6HaypIdnR3Jr4exG0XYhOFnrKczP1JD6hKI8j3C+MYwi+gQBLyZ4C4WNP5AiRhLl50/VvZXxwOfEUSrfsXkrGm6TP5voqYD5wWz4+NAMxSXctnV9F8Lsi6ZcBP3HXnwPLgfmhtIEnPZpyYFGZx1yPJDb52IhEMeYBt6P0Jj9ZaBRwS5k7kQXzgX6BKPI3aIJ/yr8VP8jYumgERn8jtHgUBCeBwbOQ1PHWxjiUfjE7m68vmn87IJnMxVhy5YYFTi75bbPmSmAuSi+KqZ+AGD1zvbI9gJ8iXvpaYDJKL/XqByGejPy5dzpKN2LN0cChKD3R0R2K5E+ODT2zs+NfjSQZTULpla5uJ2AUsB/iWbkDpRd7R5tHUPoBR3swcua+qXngUem7XIPWwAJgaEYVeQ5Bp7A/gYcD4wDjle2FGANHIR6LQ4BnnTDBmrGIx78B+MC1zYdcelPwuOCeOyr0zPbIfn0qIrQjgaexpqOrW4hE61ciB+1nsKYvhaONnz54kfvtHh0xVvo6trzwHkOCjZXzTMhHIc8AB2FNP1d2IRJ/64/SVyBe+TuB/d23bWORiP5olNbIij/XRf3TYDASTzwKpccBxyFuxmOBIUh4px9KX4HSpyGfXF/mte+DNfu43Nem7+ziQ/0ivKEUcu0riSlIWD/zd2OxsKadG89vkZyU0a7m28BClN6MNacgSUUfIceJ3RBvytMep8eRLaY65ZMPAF5tWpBKN6D0AJS+36vz5/hRgl/4PIe8kSfi+WyTk3CUnol807awQtO5BhiB0udtgRTAwUgq9y3Ih5qDsGZnxNWVj450RtTVBYiHpA6J1e3s8cmnMXyKCNfPlayiuXH3Wag9WDMVa05AQmq7uOy0PHYnGMa6FxHcYOCufGFrfQO+EfHWXIXSxcSw0vR1KbIP5QfZiNIfY82TSK5IPt3i30hu44eubBjwAOIbfAj5BwPXYs0cJFnoBEQoM5CI+H5IDs4sJB3jbWAq0BWlj8Sa/R3vaiR94WyUnoY1w1zfDncCegnQwA2OzzzEGfJfJMV9X0S1Nrrr5UD/dGlvSn+B0ncgYf0zkf2oFANiqetUD5QeU3ahFXAzou4+Ap5wk3gEkjD0gsu0mooEL29HUuPuQbwWLxNMWD0fMUxWO34HIgZUI5JzOsdN/mdAf+BXrt1MRJvMR9TvbVhT7wR/DUrXoPSrjv/VSJrDQiTj68/eWNYijvYalG7KSCv2310UEP1/TjpRyKNYh6yO1yn8n5PnKn6oln9N4S/IRiSouX3gq1lJC28HrHf7245IotDKyAUlVmZbYEmzMVizqxv7kqZsZmt2AOq9+/aO/4pme7k12yEvRW3Td4eSy7kDoq4lfVHpDS7B6JP/AyEoNrvkD9w1AAAAAElFTkSuQmCC") 0 0 no-repeat
+    }
+
+    .remind {
+        margin-top: 52px;
+        font-size: 18px;
+        line-height: 18px;
+        color: #333;
+    }
+
+    .tip {
+        margin-top: 14px;
+        font-size: 14px;
+        line-height: 14px;
+        color: #999
+    }
+
+    .content {
+        margin-top: 32px
+    }
+
+    .content input {
+        display: inline-block;
+        width: 210px;
+        padding: 0 13px;
+        height: 42px;
+        line-height: 42px;
+        font-size: 18px;
+        border: 1px solid #d5dadf;
+        border-radius: 2px
+    }
+
+    .content input:focus {
+        outline: 0;
+        border: 1px solid #00b38a
+    }
+
+    .content #captcha {
+        display: inline-block;
+        vertical-align: top;
+        width: 112px;
+        height: 42px;
+        margin-left: 8px;
+        border: 1px solid #d5dadf;
+        position: relative;
+    }
+
+    .content a {
+        display: inline-block;
+        margin-left: 13px;
+        font-size: 14px;
+        line-height: 42px;
+        color: #00b38a;
+        text-decoration: underline
+    }
+
+    .btn {
+        display: inline-block;
+        width: 365px;
+        height: 50px;
+        line-height: 50px;
+        margin-top: 14px;
+        border-radius: 2px;
+        font-size: 18px;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background: #00b38a
+    }
+
+    #errorMsg {
+        position: relative;
+        z-index: 2;
+        display: block;
+        margin-top: 5px;
+        line-height: 18px;
+        font-size: 12px;
+        padding-left: 20px;
+        color: #fd5f39;
+        background: url(https://static.lagou.com/passport/static/common/static/img/info_5a35a92.png) left center no-repeat;
+        background-size: 14px
+    }
+
+    .notify {
+        line-height: 22px;
+        width: 440px;
+    }
+
+    .getVerifyButton {
+        display: inline-block;
+        width: 100px;
+        padding: 0px;
+        height: 42px;
+        line-height: 42px;
+        font-size: 18px;
+        border: 0px;
+        border-radius: 2px;
+        cursor: pointer;
+        outline:none;
+    }
+
+    .counting {
+        color: #ccc; background-color: #fff;
+    }
+
+    .nocount {
+        color: #00b38a; background-color: #fff;
+    }</style>
+    <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script>
+        !function (global, factory) {
+            "use strict";
+            "object" == typeof module && "object" == typeof module.exports ? module.exports = global.document ? factory(global, !0) : function (w) {
+                if (!w.document) throw new Error("Geetest requires a window with a document");
+                return factory(w)
+            } : factory(global)
+        }("undefined" != typeof window ? window : this, function (window, noGlobal) {
+            "use strict";
+
+            function _Object(obj) {
+                this._obj = obj
+            }
+
+            function Config(config) {
+                var self = this;
+                new _Object(config)._each(function (key, value) {
+                    self[key] = value
+                })
+            }
+
+            if (void 0 === window) throw new Error("Geetest requires browser environment");
+            var document = window.document, Math = window.Math, head = document.getElementsByTagName("head")[0];
+            _Object.prototype = {
+                _each: function (process) {
+                    var _obj = this._obj;
+                    for (var k in _obj) _obj.hasOwnProperty(k) && process(k, _obj[k]);
+                    return this
+                }
+            }, Config.prototype = {
+                api_server: "api.geetest.com",
+                type_path: "/gettype_deepknow.php",
+                protocol: "http://",
+                static_servers: ["static.geetest.com", "dn-staticdown.qbox.me"],
+                path: "/static/js/sense.js",
+                type: "sense",
+                _extend: function (obj) {
+                    var self = this;
+                    new _Object(obj)._each(function (key, value) {
+                        self[key] = value
+                    })
+                }
+            };
+            var isNumber = function (value) {
+                return "number" == typeof value
+            }, isString = function (value) {
+                return "string" == typeof value
+            }, isBoolean = function (value) {
+                return "boolean" == typeof value
+            }, isFunction = function (value) {
+                return "function" == typeof value
+            }, random = function () {
+                return parseInt(1e4 * Math.random()) + (new Date).valueOf()
+            }, loadScript = function (url, cb) {
+                var script = document.createElement("script");
+                script.charset = "UTF-8", script.async = !0, script.onerror = function () {
+                    cb(!0)
+                };
+                var loaded = !1;
+                script.onload = script.onreadystatechange = function () {
+                    loaded || script.readyState && "loaded" !== script.readyState && "complete" !== script.readyState || (loaded = !0, setTimeout(function () {
+                        cb(!1)
+                    }, 0))
+                }, setTimeout(function () {
+                    script.src = url, head.appendChild(script)
+                }, 10)
+            }, normalizeDomain = function (domain) {
+                return domain.replace(/^https?:\/\/|\/$/g, "")
+            }, normalizePath = function (path) {
+                return path = path.replace(/\/+/g, "/"), 0 !== path.indexOf("/") && (path = "/" + path), path
+            }, normalizeQuery = function (query) {
+                if (!query) return "";
+                var q = "?";
+                return new _Object(query)._each(function (key, value) {
+                    (isString(value) || isNumber(value) || isBoolean(value)) && (q = q + encodeURIComponent(key) + "=" + encodeURIComponent(value) + "&")
+                }), "?" === q && (q = ""), q.replace(/&$/, "")
+            }, makeURL = function (protocol, domain, path, query) {
+                domain = normalizeDomain(domain);
+                var url = normalizePath(path) + normalizeQuery(query);
+                return domain && (url = protocol + domain + url), url
+            }, load = function (protocol, domains, path, query, cb) {
+                var tryRequest = function (at) {
+                    var url = makeURL(protocol, domains[at], path, query);
+                    loadScript(url, function (err) {
+                        err ? at >= domains.length - 1 ? cb(!0) : tryRequest(at + 1) : cb(!1)
+                    })
+                };
+                tryRequest(0)
+            }, jsonp = function (domains, path, config, callback) {
+                var cb = "geetest_" + random();
+                window[cb] = function (data) {
+                    callback("success" === data.status ? data.data : data), window[cb] = undefined;
+                    try {
+                        delete window[cb]
+                    } catch (e) {
+                    }
+                }, load(config.protocol, domains, path, {gt: config.id, callback: cb}, function (err) {
+                    err && throwError("networkError", config)
+                })
+            }, throwError = function (errorType, config) {
+                var errors = {
+                    networkError: "网络错误",
+                    idNotExist: "参数id必填",
+                    cbIlegal: "callback必须是function",
+                    geetestNotExist: "Geetest不存在"
+                };
+                if ("function" != typeof config.onError) throw new Error(errors[errorType]);
+                config.onError(errors[errorType])
+            }, detect = function () {
+                return !!window.Geetest
+            }, initSense = function (userConfig, callback) {
+                var config = new Config(userConfig);
+                return userConfig.https ? config.protocol = "https://" : "http:" !== window.location.protocol && "https:" !== window.location.protocol ? config.protocol = "https://" : config.protocol = window.location.protocol + "//", userConfig && userConfig.id ? callback && !isFunction(callback) ? void throwError("cbIlegal", config) : detect() ? void(callback && callback(new window.Geetest(config))) : void jsonp([config.api_server], config.type_path, config, function (newConfig) {
+                    load(config.protocol, newConfig.static_servers, newConfig.path, null, function (err) {
+                        if (err) throwError("networkError", config); else {
+                            if ("undefined" == typeof window.Geetest) return void throwError("geetestNotExist", config);
+                            config._extend(newConfig), callback && callback(new window.Geetest(config))
+                        }
+                    })
+                }) : void throwError("idNotExist", config)
+            };
+            return window.initSense = initSense, initSense
+        });
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <input type="hidden" name="csrfmiddlewaretoken" value="G1LygIRn083rzhPTaOcjUQ6E8EUUvU7XRd22bosCvZSfWWObx4XrzZkKg2V2DJY5">
+
+    <div class="i_logo"></div>
+    <p class="remind">欢迎进入拉勾验证系统，请进行验证！</p>
+    
+        <div id="errorMsg" style="display: none"></div>
+        <a class="btn" id="btn" >立即验证</a>
+    
+    
+
+    
+
+    
+        
+        <div class="notify tip">
+            <p>账号安全提醒：</p>
+            <p>1.请注意保管好自己的帐号及密码，使用复杂密码提高帐号的安全等级。</p>
+            <p>2.不要向任何第三方平台泄露自己的账号密码，特别是其它招聘管理平台、简历管理平台等。</p>
+            <p>3.不要使用任何第三方平台浏览器插件管理简历以及职位。</p>
+            <br />
+            <p>您可能会遇到多次验证的情况，跟您当前的网络环境关系比较大，为了您的账号安全，请您耐心验证，对您的使用造成的不便，请您理解！</p>
+        </div>
+        
+    
+
+
+</div>
+<script type="text/javascript" src="http://www.lgstatic.com/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    // 极验
+    initSense({
+        id:'95fb0035e044b6c1a10e84319230d962',
+        onError:function(err){
+            console.log('gt error', err)
+        }
+    }, function(sense){
+        $('#btn').click(function () {
+            sense.sense()
+        });
+        sense.setInfos(function () {
+            return {
+                interactive: 1
+            }
+        }).onSuccess(function (data) {
+            submit1(data)
+        }).onClose(function(){
+            console.log('close')
+        }).onError(function(err){
+            console.log(err);
+        })
+    });
+    //
+    initSense({
+        id:'95fb0035e044b6c1a10e84319230d962',
+        onError:function(err){
+            console.log('gt error', err)
+        }
+    }, function(sense){
+        $('#bsubmit').click(function () {
+            sense.sense()
+        });
+        sense.setInfos(function () {
+            return {
+                interactive: 1
+            }
+        }).onSuccess(function (data) {
+            var $verifyButton = $('.getVerifyButton')
+            var countdownTimer = null;
+            function changeSendCodeButtonCountdown(second) {
+                if (second <= 0) {
+                    clearTimeout(countdownTimer);
+                    $verifyButton.removeClass('counting').addClass('nocount').text('获取验证码');
+                } else {
+                    countdownTimer = setTimeout(changeSendCodeButtonCountdown, 1000, second - 1);
+                    $verifyButton.removeClass('nocount').addClass('counting').text(second + 's');
+                }
+            }
+            if (!$verifyButton.hasClass('counting')) {
+                $.ajax({
+                    url: 'sendCode',
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        t: new Date().getTime(),
+                        type: $('#contactSelect').val(),
+                        challenge: data.challenge
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        if (data.state == 1) {
+                            var realData = data.content.data;
+                            if (!realData) {
+                                showError('请刷新页面重试');
+                            }
+                            changeSendCodeButtonCountdown(realData.surplus);
+                        } else {
+                            showError(data.message);
+                        }
+                    }
+                })
+            }
+
+        }).onClose(function(){
+            console.log('close')
+        }).onError(function(err){
+            console.log(err);
+        })
+    });
+    function submit1(data){
+        var host = "https://www.lagou.com/jobs/9382087.html";
+        $.ajax({
+            url: 'parseSession',
+            type: "post",
+            dataType: "json",
+            data: {
+                challenge: data.challenge,
+                errcode:3
+            },
+            success: function (result) {
+                window.location.href = host;
+            }
+        })
+
+    }
+
+    // 验证码跳转
+    function showError(msg) {
+        jQuery("#errorMsg").html(msg).show();
+    }
+
+    function isIE() {
+        if (!!window.ActiveXObject || "ActiveXObject" in window) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        console.log(reg)
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            console.log(r)
+            return unescape(r[2])
+        }
+
+        // 设置默认地址
+
+        return "https://www.lagou.com/"
+    }
+
+    function goToUrl(url) {
+        console.log(url)
+        if (isIE()) {
+            var referLink = document.createElement("a");
+            referLink.href = url;
+            document.body.appendChild(referLink);
+            referLink.click()
+        } else {
+            location.href = url
+        }
+    }
+
+    $('#submit').click(function() {
+        var code = document.getElementById('code').value;
+        if (!code) {
+            showError('请填写验证码');
+            return;
+        }
+        else{
+            console.log("111111")
+            console.log(3)
+            $.ajax({
+                url: 'checkcode',
+                type: "post",
+                dataType: "json",
+                data: {
+                    t: new Date().getTime(),
+                    code: code,
+                    type: $('#contactSelect').val(),
+                    errcode :3
+                },
+                success:function (data) {
+                    console.log(data)
+                    if (data.state == 1) {
+                        goToUrl(getUrlParam("f"))
+                    } else {
+                        showError("验证码错误，请重新输入！")
+                    }
+                }
+            })
+        }
+    });
+
+</script>
+
+<script>
+    function submitTencent(data){
+        console.log(data);
+        var host = "https://www.lagou.com/jobs/9382087.html";
+        console.log("1234")
+        $.ajax({
+            url: 'parseSessionNew',
+            type: "post",
+            dataType: "json",
+            data: {
+                ticket: data.ticket,
+                randstr: data.randstr,
+                errcode:3
+            },
+            success: function (result) {
+                console.log(result)
+                //alert(result);
+                if (result.code == 1){
+                    window.location.href = host;
+                }else{
+                    alert("验证不通过")
+                }
+            }
+        })
+    }
+    window.callback = function(res) {
+        if (res.ret === 1) {//验证失败
+               alert("未通过验证，请重新验证");
+            return;
+        }
+        if (res.ret === 0) {//验证成功
+            //这里就是给上面的2个标签赋值
+            $('#ticket').attr('value', res.ticket);//回调的票据
+            $('#randstr').attr('value', res.randstr);//回调的字符串
+            //#alert(res.ticket);
+            //#alert(res.randstr);
+			submitTencent(res);
+        }
+    }
+    window.callback1 = function(res) {
+        if (res.ret === 1) {//验证失败
+               alert("未通过验证，请重新验证");
+            return;
+        }
+        if (res.ret === 0) {//验证成功
+            //这里就是给上面的2个标签赋值
+            $('#ticket').attr('value', res.ticket);//回调的票据
+            $('#randstr').attr('value', res.randstr);//回调的字符串
+            //#alert(res.ticket);
+            //#alert(res.randstr);
+			submitTencent1(res);
+        }
+    }
+    function submitTencent1(data){
+
+            var $verifyButton = $('.getVerifyButton')
+            var countdownTimer = null;
+            function changeSendCodeButtonCountdown(second) {
+                if (second <= 0) {
+                    clearTimeout(countdownTimer);
+                    $verifyButton.removeClass('counting').addClass('nocount').text('获取验证码');
+                } else {
+                    countdownTimer = setTimeout(changeSendCodeButtonCountdown, 1000, second - 1);
+                    $verifyButton.removeClass('nocount').addClass('counting').text(second + 's');
+                }
+            }
+            if (!$verifyButton.hasClass('counting')) {
+                $.ajax({
+                    url: 'sendCodeTencent',
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        t: new Date().getTime(),
+                        type: $('#contactSelect').val(),
+                        ticket: data.ticket,
+                        randstr: data.randstr,
+                        errcode:1
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        if (data.state == 1) {
+                            var realData = data.content.data;
+                            if (!realData) {
+                                showError('请刷新页面重试');
+                            }
+                            changeSendCodeButtonCountdown(realData.surplus);
+                        } else {
+                            showError(data.message);
+                        }
+                    }
+                })
+            }
+
+    }
+</script>
+
+</body>
+</html>
